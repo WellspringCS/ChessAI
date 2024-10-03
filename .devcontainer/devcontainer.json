@@ -1,0 +1,40 @@
+
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+  "name": "tj-chess",
+  "runArgs": [
+      // Use the network stack of the host machine
+      "--net=host"
+  ],
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+        "vscode": "true"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet": "2.0",
+    "ghcr.io/devcontainers/features/docker-outside-of-docker": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "mark-tucker.aws-cli-configure",
+        "ms-dotnettools.csdevkit",
+        "stkb.rewrap",
+        "mhutchie.git-graph",
+        "adrianwilczynski.user-secrets",
+        "EditorConfig.EditorConfig"
+      ]
+    }
+  },
+  "forwardPorts": [
+    6443
+  ]
+}

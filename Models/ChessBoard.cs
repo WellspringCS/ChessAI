@@ -175,7 +175,7 @@ public class ChessBoard
     /// </summary>
     public void MovePiece(ChessPiece piece, int newRow, int newCol)
     {
-        Pieces[piece.Row, piece.Col] = null;
+        Pieces[piece.Row, piece.Col] = null!;
         Pieces[newRow, newCol] = piece;
         piece.Row = newRow;
         piece.Col = newCol;
@@ -622,7 +622,7 @@ public class ChessBoard
         var capturedPiece = Pieces[move.toRow, move.toCol];
 
         Pieces[move.toRow, move.toCol] = piece;
-        Pieces[originalRow, originalCol] = null;
+        Pieces[originalRow, originalCol] = null!;
         piece.Row = move.toRow;
         piece.Col = move.toCol;
 

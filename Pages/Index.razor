@@ -64,7 +64,7 @@
 
 @code {
     private ChessBoard Board { get; set; } = new();
-    private GameState State { get; set; }
+    private GameState State { get; set; } = null!;
     private (int Row, int Col)? DraggedPiecePosition { get; set; }
     private bool IsGameOver { get; set; }
     private string GameOverMessage { get; set; } = "";
@@ -167,11 +167,11 @@
                if (IsValidMove(move))
                {
                    Board.ApplyMove(move);
-                   await CheckGameState();
+                   CheckGameState();
                    if (!IsGameOver)
                    {
                        await MakeAIMove();
-                       await CheckGameState();
+                       CheckGameState();
                    }
                }
            }
@@ -181,7 +181,7 @@
        }
    }
 
-   private async Task CheckGameState()
+   private void CheckGameState()
    {
        var currentColor = State.ActiveColor;
        var previousColor = currentColor == ChessPiece.PieceColor.White ? ChessPiece.PieceColor.Black : ChessPiece.PieceColor.White;
